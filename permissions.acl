@@ -1,0 +1,100 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// operation: ALL, CREATE, READ, UPDATE, DELETE
+// action: ALLOW, DENY
+
+// Admin rules
+
+rule NetworkAdminUser {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "**"
+    action: ALLOW
+}
+
+rule NetworkAdminSystem {
+    description: "Grant business network administrators full access to system resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+
+rule RuleViewAll {
+    description: "Grant all users full viewership of the entire network"
+    participant: "org.hyperledger.composer.system.Participant"
+    operation: READ
+    resource: "org.hyperledger.composer.system.Asset"
+    action: ALLOW
+}
+
+rule RuleExecuteTransactions {
+  description: "can write HistorianRecord to the Historian"
+  participant: "org.hyperledger.composer.system.Participant"
+  operation: CREATE
+  resource: "org.hyperledger.composer.system.HistorianRecord"
+  action: ALLOW
+}
+
+/*
+ * Permissions for the inspector
+*/
+
+// Permission fot the supervisot to execute the createAnalyzed_Tube transaction
+
+rule RuleAnalystCreateAnalyzedTube {
+  description: "Grant analyst participant create permission for Analyzed Tubes"
+  participant: "nuclearhyperledger.Analyst"
+  operation: CREATE 
+  resource: "nuclearhyperledger.Analyzed_Tube"
+  transaction: "nuclearhyperledger.createAnalyzed_Tube"
+  action: ALLOW
+}
+
+// Permission fot the supervisot to execute the createAcquired_Tube transaction
+
+rule RuleAnalystCreateAcquiredTube {
+  description: "Grant analyst participant create permission for Acquired Tubes"
+  participant: "nuclearhyperledger.Analyst"
+  operation: CREATE 
+  resource: "nuclearhyperledger.Acquired_Tube"
+  transaction: "nuclearhyperledger.createAcquired_Tube"
+  action: ALLOW
+}
+
+// Permission fot the supervisot to execute the createIndication transaction
+
+rule RuleAnalystCreateIndication {
+  description: "Grant analyst participant create permission for Acquired Tubes"
+  participant: "nuclearhyperledger.Analyst"
+  operation: CREATE 
+  resource: "nuclearhyperledger.Indication"
+  transaction: "nuclearhyperledger.createIndication"
+  action: ALLOW
+}
+
+// Permission fot the supervisot to execute the createCalibration transaction
+
+rule RuleAnalystCreateCalibration {
+  description: "Grant analyst participant create permission for calibrations"
+  participant: "nuclearhyperledger.Analyst"
+  operation: CREATE 
+  resource: "nuclearhyperledger.Calibration"
+  transaction: "nuclearhyperledger.createCalibration"
+  action: ALLOW
+}
+
+

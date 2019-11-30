@@ -1,0 +1,170 @@
+ /*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Write your model definitions here
+ */
+
+namespace nuclearhyperledger
+
+// Concepts
+
+enum Role {
+
+  o One
+  o Two
+
+}
+
+// Participants 
+
+participant Analyst identified by analyst_ID {
+
+  o String analyst_ID
+  o String passport
+  o String name
+  o String nationality
+  o Role role
+
+}
+
+// Assets
+
+asset Analyzed_Tube identified by analyzed_tube_ID {
+
+  o String analyzed_tube_ID
+  o String method
+  o String state
+  --> Analyst analyst 
+  --> Acquired_Tube acquired_tube 
+
+}
+
+asset Acquired_Tube identified by acquired_tube_ID {
+
+  o String acquired_tube_ID
+  o DateTime acqDate
+  o String rawFile
+  --> Tube tube 
+  --> Calibration calibration 
+
+}
+
+asset Indication identified by indication_ID {
+
+  o String indication_ID
+  o DateTime indDate
+  o Integer position
+  o String type
+  --> Analyzed_Tube analyzed_tube 
+
+}
+
+asset Tube identified by tube_ID {
+
+  o String tube_ID
+  o Integer posX
+  o Integer posY
+  o Integer length
+
+}
+
+asset Calibration identified by calibration_ID {
+
+  o String calibration_ID
+  o DateTime calDate
+  o String equipment
+  --> Work work 
+
+}
+
+asset Work identified by work_ID {
+
+  o String work_ID
+  o DateTime workDate
+  o String description
+
+}
+
+// transactions
+
+transaction init {
+}
+
+transaction createAnalyst {
+
+  o String param_analyst_ID
+  o String param_passport
+  o String param_name
+  o String param_nationality
+  o Role param_role
+
+}
+
+transaction createAnalyzed_Tube {
+  
+  o String param_analyzed_tube_ID
+  o String param_method
+  o String param_state
+  o Analyst param_analyst 
+  o Acquired_Tube param_aquired_tube 
+
+}
+
+transaction createAcquired_Tube {
+  
+  o String param_acquired_tube_ID
+  o DateTime param_acqDate
+  o String param_rawFile
+  o Tube param_tube 
+  o Calibration param_calibration 
+
+}
+
+transaction createIndication {
+  
+  o String param_indication_ID
+  o DateTime param_indDate
+  o Integer param_position
+  o String param_type
+  o Analyzed_Tube param_analyzed_tube 
+
+}
+
+transaction createTube {
+  
+  o String param_tube_ID
+  o DateTime param_indDate
+  o Integer param_position
+  o String param_type
+  o Analyzed_Tube param_analyzed_tube 
+
+}
+
+transaction createCalibration {
+  
+  o String param_calibration_ID
+  o DateTime param_calDate
+  o String param_equipment
+  o Work param_work 
+
+}
+
+transaction createWork {
+  
+  o String param_work_ID
+  o DateTime param_workDate
+  o String param_description
+
+}
