@@ -54,7 +54,7 @@ asset Analyzed_Tube identified by analyzed_tube_ID {
 asset Acquired_Tube identified by acquired_tube_ID {
 
   o String acquired_tube_ID
-  o DateTime acqDate
+  o String acqDate
   o String rawFile
   --> Tube tube 
   --> Calibration calibration 
@@ -64,7 +64,7 @@ asset Acquired_Tube identified by acquired_tube_ID {
 asset Indication identified by indication_ID {
 
   o String indication_ID
-  o DateTime indDate
+  o String indDate
   o Integer position
   o String type
   --> Analyzed_Tube analyzed_tube 
@@ -83,7 +83,7 @@ asset Tube identified by tube_ID {
 asset Calibration identified by calibration_ID {
 
   o String calibration_ID
-  o DateTime calDate
+  o String calDate
   o String equipment
   --> Work work 
 
@@ -92,7 +92,7 @@ asset Calibration identified by calibration_ID {
 asset Work identified by work_ID {
 
   o String work_ID
-  o DateTime workDate
+  o String workDate
   o String description
 
 }
@@ -117,28 +117,28 @@ transaction createAnalyzed_Tube {
   o String param_analyzed_tube_ID
   o String param_method
   o String param_state
-  o Analyst param_analyst 
-  o Acquired_Tube param_aquired_tube 
+  --> Analyst param_analyst 
+  --> Acquired_Tube param_acquired_tube 
 
 }
 
 transaction createAcquired_Tube {
   
   o String param_acquired_tube_ID
-  o DateTime param_acqDate
+  o String param_acqDate
   o String param_rawFile
-  o Tube param_tube 
-  o Calibration param_calibration 
+  --> Tube param_tube 
+  --> Calibration param_calibration 
 
 }
 
 transaction createIndication {
   
   o String param_indication_ID
-  o DateTime param_indDate
+  o String param_indDate
   o Integer param_position
   o String param_type
-  o Analyzed_Tube param_analyzed_tube 
+  --> Analyzed_Tube param_analyzed_tube 
 
 }
 
@@ -154,16 +154,16 @@ transaction createTube {
 transaction createCalibration {
   
   o String param_calibration_ID
-  o DateTime param_calDate
+  o String param_calDate
   o String param_equipment
-  o Work param_work 
+  --> Work param_work 
 
 }
 
 transaction createWork {
   
   o String param_work_ID
-  o DateTime param_workDate
+  o String param_workDate
   o String param_description
 
 }
