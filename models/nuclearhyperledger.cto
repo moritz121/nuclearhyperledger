@@ -145,10 +145,9 @@ transaction createIndication {
 transaction createTube {
   
   o String param_tube_ID
-  o DateTime param_indDate
-  o Integer param_position
-  o String param_type
-  o Analyzed_Tube param_analyzed_tube 
+  o Integer param_posX
+  o Integer param_posY
+  o Integer param_length
 
 }
 
