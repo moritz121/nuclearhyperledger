@@ -50,10 +50,8 @@ rule RuleExecuteTransactions {
 }
 
 /*
- * Permissions for the inspector
+ * Permissions for analysts
 */
-
-// Permission fot the supervisot to execute the createAnalyzed_Tube transaction
 
 rule RuleAnalystCreateAnalyzedTube {
   description: "Grant analyst participant create permission for Analyzed Tubes"
@@ -64,8 +62,6 @@ rule RuleAnalystCreateAnalyzedTube {
   action: ALLOW
 }
 
-// Permission fot the supervisot to execute the createAcquired_Tube transaction
-
 rule RuleAnalystCreateAcquiredTube {
   description: "Grant analyst participant create permission for Acquired Tubes"
   participant: "nuclearhyperledger.Analyst"
@@ -74,8 +70,6 @@ rule RuleAnalystCreateAcquiredTube {
   transaction: "nuclearhyperledger.createAcquired_Tube"
   action: ALLOW
 }
-
-// Permission fot the supervisot to execute the createIndication transaction
 
 rule RuleAnalystCreateIndication {
   description: "Grant analyst participant create permission for Acquired Tubes"
@@ -86,8 +80,6 @@ rule RuleAnalystCreateIndication {
   action: ALLOW
 }
 
-// Permission fot the supervisot to execute the createCalibration transaction
-
 rule RuleAnalystCreateCalibration {
   description: "Grant analyst participant create permission for calibrations"
   participant: "nuclearhyperledger.Analyst"
@@ -97,4 +89,10 @@ rule RuleAnalystCreateCalibration {
   action: ALLOW
 }
 
-
+rule RuleAllParticipantsCreateAllAssets {
+    description: "Everyone can create all resources in the nuclearhyperledger namespace"
+    participant: "ANY"
+    operation: CREATE
+    resource: "nuclearhyperledger.*"
+    action: ALLOW
+}

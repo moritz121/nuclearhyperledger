@@ -1,0 +1,53 @@
+query QTube {
+  description: "Select all tubes"
+  statement:
+    SELECT nuclearhyperledger.Tube
+}
+
+query QAnalyst {
+  description: "Select all Analysts"
+  statement:
+    SELECT nuclearhyperledger.Analyst
+}
+
+query QAcq {
+  description: "Select all acquired_tubes"
+  statement:
+    SELECT nuclearhyperledger.Acquired_Tube
+}
+
+query QAn {
+  description: "Select all analyzed_tubes"
+  statement: 
+    SELECT nuclearhyperledger.Analyzed_Tube
+}
+
+query QIndication {
+  description: "Select all indications"
+  statement: 
+    SELECT nuclearhyperledger.Indication
+}
+
+query QCalibration {
+  description: "Select all calibrations"
+  statement:
+    SELECT nuclearhyperledger.Calibration
+}
+
+query QWork {
+  description: "Select all works"
+  statement:
+    SELECT nuclearhyperledger.Work
+}
+
+query QNonAcq {
+  description: "Selects all tubes that have not been yet acquired. Takes in the ID of the tubes that have been acquired"
+  statement:
+    SELECT nuclearhyperledger.Tube
+}
+
+query QNonAn {
+  description: "Selects all the acquired tubes that have not been yet analyzed by an analyst of a certain role. Takes in role of the analyst as a integer and the ID of the tubes that have been analyzed"
+  statement:
+    SELECT nuclearhyperledger.Acquired_Tube
+}

@@ -2,7 +2,7 @@
   "engines": {
     "composer": "^0.20.5"
   },
-  "name": "alfa_network_1",
+  "name": "nuclearhyperledger",
   "version": "0.0.1",
   "description": "First alfa vertion of the network",
   "scripts": {

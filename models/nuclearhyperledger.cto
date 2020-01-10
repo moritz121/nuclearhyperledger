@@ -108,7 +108,7 @@ transaction createAnalyst {
   o String param_passport
   o String param_name
   o String param_nationality
-  o Role param_role
+  o String param_role_ID
 
 }
 
@@ -117,8 +117,8 @@ transaction createAnalyzed_Tube {
   o String param_analyzed_tube_ID
   o String param_method
   o String param_state
-  --> Analyst param_analyst 
-  --> Acquired_Tube param_acquired_tube 
+  o String param_analyst_ID 
+  o String param_acquired_tube_ID
 
 }
 
@@ -127,8 +127,8 @@ transaction createAcquired_Tube {
   o String param_acquired_tube_ID
   o String param_acqDate
   o String param_rawFile
-  --> Tube param_tube 
-  --> Calibration param_calibration 
+  o String param_tube_ID
+  o String param_calibration_ID 
 
 }
 
@@ -138,7 +138,7 @@ transaction createIndication {
   o String param_indDate
   o Integer param_position
   o String param_type
-  --> Analyzed_Tube param_analyzed_tube 
+  o String param_analyzed_tube_ID 
 
 }
 
@@ -156,7 +156,7 @@ transaction createCalibration {
   o String param_calibration_ID
   o String param_calDate
   o String param_equipment
-  --> Work param_work 
+  o String param_work_ID 
 
 }
 
